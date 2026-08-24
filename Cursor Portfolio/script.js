@@ -227,25 +227,50 @@
 
   const calendlyUrl = "https://calendly.com/jamesarancillo10/new-meeting";
 
-  contactForm?.addEventListener("submit", async (e) => {
-    e.preventDefault();
-    formStatus.className = "form-status";
-    formStatus.textContent = "";
+   contactForm?.addEventListener("submit", async (e) => {
+  e.preventDefault();
 
-    const data = {
-      name: contactForm.name.value.trim(),
-      email: contactForm.email.value.trim(),
-      message: contactForm.message.value.trim()
-    };
+  formStatus.className = "form-status";
+  formStatus.textContent = "";
 
-    if (!data.name || !data.email || !data.message) {
-      formStatus.classList.add("is-err");
-      formStatus.textContent = "Please complete all fields.";
-      return;
+  const data = {
+    name: contactForm.name.value.trim(),
+    email: contactForm.email.value.trim(),
+    message: contactForm.message.value.trim()
+  };
+
+  if (!data.name || !data.email || !data.message) {
+    formStatus.classList.add("is-err");
+    formStatus.textContent = "Please complete all fields.";
+    return;
+  }
+
+  formStatus.textContent = "Sending...";
+
+  try {
+    const formData = new FormData(contactForm);
+
+    const response = await fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      body: formData
+    });
+
+    const result = await response.json();
+
+    if (result.success) {
+      formStatus.classList.add("is-ok");
+      formStatus.textContent = "Message sent! Opening Calendly...";
+
+      setTimeout(() => {
+        window.location.assign(calendlyUrl);
+      }, 1000);
+    } else {
+      throw new Error(result.message || "Failed to send message.");
     }
-
-    formStatus.classList.add("is-ok");
-    formStatus.textContent = "Opening Calendly...";
-    window.location.assign(calendlyUrl);
-  });
+  } catch (error) {
+    formStatus.classList.add("is-err");
+    formStatus.textContent = "Something went wrong. Please try again.";
+    console.error("Web3Forms error:", error);
+  }
+});
 })();
