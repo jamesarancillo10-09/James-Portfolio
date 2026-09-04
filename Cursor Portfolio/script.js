@@ -141,38 +141,64 @@
   const projects = {
     lead: {
       title: "Lead Enrichment & Qualification",
-      body: "A Zapier workflow triggered when a lead comes in, then formats the company URL, enriches the record through a webhook, and splits into High Priority and Low Priority paths. High-priority leads are saved to Google Sheets, posted to Slack, drafted with AI, and emailed through Gmail.",
+      body: "🔴 Problem — New leads require repetitive enrichment, qualification, routing, and follow-up. 🟡 Solution — Zapier formats company URLs, enriches records through a webhook and Apollo, separates high- and low-priority paths, logs high-priority leads in Google Sheets, alerts Slack, drafts with AI, and sends through Gmail. 🟢 Result — Faster lead response, more consistent routing, organized lead data, and less manual lead handling.",
       tags: ["Zapier", "Typeform", "Webhooks", "Apollo", "Paths", "Google Sheets", "Slack", "AI by Zapier", "Gmail"],
       image: "assets/projects/leads-enrichment.png"
     },
     content: {
       title: "AI Content Repurposing",
-      body: "An automation that pulls source files from Google Drive, uses AI for transcription and blog generation, then distributes content across Facebook Pages, LinkedIn, and Instagram for Business with Zapier Paths and looping.",
+      body: "🔴 Problem — Turning one source file into content for several channels involves repeated transcription, writing, and publishing tasks. 🟡 Solution — Zapier pulls source files from Google Drive, uses AI for transcription and blog generation, then distributes content across Facebook Pages, LinkedIn, and Instagram for Business with Paths and Looping. 🟢 Result — Less repetitive content processing and more consistent multi-channel distribution.",
       tags: ["Google Drive", "AI", "Facebook Pages", "LinkedIn", "Instagram for Business", "Zapier Paths", "Looping"],
       image: "assets/projects/ai-content-repurposing.png"
     },
     crm: {
       title: "CRM Lead Engagement",
-      body: "A Zapier workflow connected to Asana that branches with Paths and Filters based on CRM stage. It uses AI-generated messaging, Gmail, Google Drive, and Delay by Zapier. Stages covered: Ready to Start, No Response, Quoted, Approved, and Paid & Closed.",
+      body: "🔴 Problem — Leads at different CRM stages need different follow-up, making manual tracking inconsistent. 🟡 Solution — Zapier reads Asana CRM stages and uses Paths, Filters, AI-generated messaging, Gmail, Google Drive, and Delay by Zapier to trigger the appropriate communication. 🟢 Result — More consistent stage-based follow-up with less manual monitoring.",
       tags: ["Asana", "Zapier Paths", "Filters", "Gmail", "Google Drive", "AI-generated messaging", "Delay by Zapier"],
       image: "assets/projects/crm-lead-engagement.png"
     },
     files: {
       title: "Gmail Attachment & AI File Processing",
-      body: "A Make.com scenario that watches Gmail for attachments, processes files with AI, stores them in Google Drive, maps data into Google Sheets, and uses conditional logic to decide next steps.",
+      body: "🔴 Problem — Email attachments require repeated downloading, reviewing, storing, and data entry. 🟡 Solution — Make.com watches Gmail for attachments, processes files with AI, stores them in Google Drive, maps data into Google Sheets, and uses conditional logic for the next steps. 🟢 Result — Better-organized files and data with fewer repetitive handling tasks.",
       tags: ["Make.com", "Gmail", "AI", "Google Drive", "Google Sheets", "Data Mapping", "Conditional Logic"],
       image: "assets/projects/gmail-ai-files.png"
     },
     xero: {
       title: "Asana–Xero Integration",
-      body: "A Make.com integration that moves and processes data between Asana and Xero through APIs, using routers, iterators, Google Sheets logging, and attachment handling.",
+      body: "🔴 Problem — Moving task data and attachments between Asana and Xero manually creates repeated data-handling work. 🟡 Solution — Make.com moves and processes data between both platforms through APIs, using routers, iterators, Google Sheets logging, and attachment handling. 🟢 Result — Less repetitive data entry and more consistent organization across the connected tools.",
       tags: ["Make.com", "Asana", "Xero", "APIs", "Routers", "Iterators", "Google Sheets", "Attachments"],
       image: "assets/projects/asana-xero.png"
     },
     n8n: {
       title: "n8n AI Automation Training",
-      body: "Full training covering AI Agents, AI workflows, APIs, MCP, workflow nodes, data handling, branching, and looping in n8n. This reflects hands-on training rather than a client engagement.",
+      body: "🔴 Problem — Building flexible n8n automations requires practical knowledge of nodes, data handling, APIs, branching, and looping. 🟡 Solution — This hands-on training project applies those concepts through AI Agents, AI workflows, APIs, MCP, and workflow logic in n8n. 🟢 Result — Demonstrates practical n8n workflow-building skills without presenting the training as client work.",
       tags: ["n8n", "AI Agents", "AI Workflows", "APIs", "MCP", "Workflow Nodes", "Data Handling", "Branching", "Looping"]
+    }
+  };
+
+  const caseLabelClasses = {
+    "🔴 Problem": "case-indicator--problem",
+    "🟡 Solution": "case-indicator--solution",
+    "🟢 Result": "case-indicator--result"
+  };
+
+  const renderCaseStudyBody = (body) => {
+    modalBody.className = "case-summary";
+    modalBody.replaceChildren();
+    const sections = body.matchAll(/(🔴 Problem|🟡 Solution|🟢 Result)\s+(—\s+.*?)(?=\s+(?:🔴 Problem|🟡 Solution|🟢 Result)\s+—|$)/g);
+
+    for (const section of sections) {
+      const modifier = caseLabelClasses[section[1]];
+      const row = document.createElement("div");
+      row.className = "case-row";
+      const label = document.createElement("span");
+      label.className = `case-indicator ${modifier}`;
+      label.textContent = section[1].replace(/^\S+\s/, "");
+      const description = document.createElement("span");
+      description.className = "case-description";
+      description.textContent = section[2];
+      row.append(label, description);
+      modalBody.append(row);
     }
   };
 
@@ -180,7 +206,7 @@
     const item = projects[key];
     if (!item || !modal) return;
     modalTitle.textContent = item.title;
-    modalBody.textContent = item.body;
+    renderCaseStudyBody(item.body);
     modalTags.innerHTML = item.tags.map((tag) => `<span>${tag}</span>`).join("");
     modal.hidden = false;
     document.body.style.overflow = "hidden";
@@ -227,7 +253,7 @@
 
   const calendlyUrl = "https://calendly.com/jamesarancillo10/new-meeting";
 
-   contactForm?.addEventListener("submit", async (e) => {
+  contactForm?.addEventListener("submit", async (e) => {
   e.preventDefault();
 
   formStatus.className = "form-status";
