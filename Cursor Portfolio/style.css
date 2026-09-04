@@ -806,6 +806,10 @@ html[data-theme="light"] .profile-orb {
   color: var(--muted);
   white-space: nowrap;
 }
+.tools-row .tool-item:nth-child(-n+2) img { width: 48px; height: 48px; }
+.tools-row .tool-item:nth-child(-n+2) span { color: var(--text); font-weight: 700; }
+.tools-row .tool-item:nth-child(n+3):nth-child(-n+4) img { width: 42px; height: 42px; }
+.tools-row .tool-item:nth-child(n+5) { opacity: 0.7; }
 @keyframes toolsMarquee {
   from { transform: translateX(-50%); }
   to { transform: translateX(0); }
@@ -817,7 +821,7 @@ html[data-theme="light"] .profile-orb {
 
 .skills-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 16px;
 }
 .skill-group h3 { margin-bottom: 12px; }
@@ -826,9 +830,21 @@ html[data-theme="light"] .profile-orb {
   padding: 6px 0;
   border-bottom: 1px solid var(--line);
 }
+.skill-group-primary { border-color: rgba(168, 85, 247, 0.5); }
+.skill-group-primary h3 { color: #d8b4fe; }
+.skill-tool { display: flex; align-items: center; gap: 10px; font-weight: 600; }
+.skill-tool img { width: 28px; height: 28px; object-fit: contain; }
+.skill-group-primary .skill-tool { color: var(--text); font-size: 16px; font-weight: 700; }
+.skill-group-primary .skill-tool img { width: 34px; height: 34px; }
+.skill-group-capabilities ul,
+.skill-group-supporting ul { columns: 2; column-gap: 18px; }
+.skill-group-capabilities li,
+.skill-group-supporting li { break-inside: avoid; }
+.skill-group-supporting li { font-size: 13px; }
 
 .cert-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
 .cert-card { display: block; }
+.cert-card--automation { border-color: rgba(168, 85, 247, 0.34); }
 .cert-mark {
   display: block;
   width: 100%;
@@ -844,6 +860,9 @@ html[data-theme="light"] .profile-orb {
 }
 .cert-mark img { display: block; width: 100%; height: auto; }
 .cert-card > .cert-mark + div { margin-top: 16px; }
+.cert-details h3 { margin: 4px 0 6px; font-size: 18px; line-height: 1.35; }
+.cert-date { font-size: 12px; letter-spacing: 0.04em; }
+.cert-issuer { color: var(--muted); font-weight: 600; }
 
 .contact-panel {
   display: grid;
@@ -1035,6 +1054,10 @@ html[data-theme="light"] .profile-orb {
   }
   .tool-item { min-width: 78px; gap: 6px; }
   .tool-item img { width: 36px; height: 36px; }
+  .tools-row .tool-item:nth-child(-n+2) img { width: 40px; height: 40px; }
+  .tools-row .tool-item:nth-child(n+5) { opacity: 0.72; }
+  .skill-group-capabilities ul,
+  .skill-group-supporting ul { columns: 1; }
 }
 
 @media (prefers-reduced-motion: reduce) {
