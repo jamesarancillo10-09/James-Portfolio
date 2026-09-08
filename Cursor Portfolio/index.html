@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="James Arancillo — AI Automation Specialist. Zapier, Make.com, n8n, GoHighLevel, AI, APIs & Webhooks.">
+  <meta name="description" content="James Arancillo — AI Automation Specialist. Zapier, GoHighLevel, Make.com, AI, APIs & Webhooks.">
   <title>James Arancillo | AI Automation Specialist</title>
   <link rel="icon" href="assets/profile.jpg" type="image/jpeg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -72,7 +72,7 @@
         <h1>I Automate Lead Management, CRM Workflows &amp; Repetitive Business Processes.</h1>
 
         <p class="lede">
-          I build reliable automation systems using Zapier, GoHighLevel, Make, and n8n to help businesses
+          I build reliable automation systems using Zapier, GoHighLevel, and Make to help businesses
           capture leads, automate follow-ups, connect their tools, and reduce repetitive manual work.
         </p>
 
@@ -82,7 +82,7 @@
         </div>
 
         <p class="stack-line">
-          AI Automation | Zapier | Make.com | n8n | GoHighLevel | AI | APIs &amp; Webhooks
+          AI Automation | Zapier | Make.com | GoHighLevel | AI | APIs &amp; Webhooks
         </p>
       </div>
 
@@ -121,11 +121,6 @@
           <div class="float-icon fi-3" style="--d:.8s">
             <img src="assets/icons/make.svg" alt="">
             <small>Make.com</small>
-          </div>
-
-          <div class="float-icon fi-4" style="--d:1.2s">
-            <span><img src="assets/icons/n8n.svg" alt=""></span>
-            <small>n8n</small>
           </div>
 
           <div class="float-icon fi-5" style="--d:.2s">
@@ -190,6 +185,16 @@
             <li>AI-powered communication</li>
             <li>Cross-platform integrations</li>
           </ul>
+
+          <div class="about-intro-cta">
+            <button
+              class="btn btn-ghost"
+              type="button"
+              data-video="assets/videos/about-me.mp4"
+              data-video-title="About Me — James Arancillo"
+              aria-label="Watch James Arancillo's introduction"
+            >Watch My Introduction</button>
+          </div>
         </div>
 
         <aside class="about-side reveal delay-1">
@@ -247,7 +252,7 @@
         <p class="kicker">Services</p>
         <h2>Automation systems built around the tools you already use.</h2>
         <p class="section-sub">
-          Primary focus: Zapier &amp; GoHighLevel automation, with Make and n8n for more advanced or flexible workflows.
+          Primary focus: Zapier &amp; GoHighLevel automation, with Make for more advanced or flexible workflows.
         </p>
       </div>
 
@@ -289,16 +294,6 @@
           <h3>Make.com Automation</h3>
           <p>
             Design scenarios with routers, iterators, data mapping, conditional logic, APIs, and attachments.
-          </p>
-        </article>
-
-        <article class="glass-card service-card reveal delay-1">
-          <div class="icon-box" aria-hidden="true">
-            <img src="assets/icons/n8n.svg" alt="">
-          </div>
-          <h3>n8n Automation</h3>
-          <p>
-            Build AI workflows with nodes, branching, looping, data handling, APIs, AI Agents, and MCP.
           </p>
         </article>
 
@@ -344,8 +339,15 @@
         </p>
       </div>
 
+      <div class="project-filters reveal" role="group" aria-label="Filter projects by platform">
+        <button class="project-filter is-active" type="button" data-project-filter="all" aria-pressed="true">All</button>
+        <button class="project-filter" type="button" data-project-filter="gohighlevel" aria-pressed="false">GoHighLevel</button>
+        <button class="project-filter" type="button" data-project-filter="zapier" aria-pressed="false">Zapier</button>
+        <button class="project-filter" type="button" data-project-filter="make" aria-pressed="false">Make</button>
+      </div>
+
       <div class="card-grid projects-grid">
-        <article class="glass-card project-card reveal">
+        <article class="glass-card project-card reveal" data-project-category="zapier">
           <button
             class="project-shot"
             type="button"
@@ -357,11 +359,7 @@
           </button>
 
           <h3>Lead Enrichment &amp; Qualification</h3>
-          <div class="case-summary">
-            <div class="case-row"><span class="case-indicator case-indicator--problem">Problem</span><span class="case-description">— New leads require repetitive enrichment, qualification, routing, and follow-up.</span></div>
-            <div class="case-row"><span class="case-indicator case-indicator--solution">Solution</span><span class="case-description">— Zapier enriches each lead, separates high- and low-priority paths, logs data, alerts the team, and prepares personalized email communication.</span></div>
-            <div class="case-row"><span class="case-indicator case-indicator--result">Result</span><span class="case-description">— Faster lead response, more consistent routing, and less manual lead handling.</span></div>
-          </div>
+          <p class="project-summary">Automates lead enrichment, qualification, routing, logging, team alerts, and personalized email follow-up through Zapier.</p>
 
           <div class="tags">
             <span>Zapier</span>
@@ -374,10 +372,19 @@
             <span>Gmail</span>
           </div>
 
-          <button class="text-link" type="button" data-project="lead">View Case Study</button>
+          <div class="project-actions">
+            <button class="text-link" type="button" data-project="lead">View Case Study</button>
+            <button
+              class="text-link project-loom-link"
+              type="button"
+              data-video="assets/videos/zapier-lead-enrichment.mp4"
+              data-video-title="Lead Enrichment &amp; Qualification — Loom Walkthrough"
+              aria-label="Watch Lead Enrichment and Qualification Loom walkthrough"
+            ><span aria-hidden="true">▶</span> Watch Loom Walkthrough</button>
+          </div>
         </article>
 
-        <article class="glass-card project-card reveal delay-1">
+        <article class="glass-card project-card reveal delay-1" data-project-category="zapier">
           <button
             class="project-shot"
             type="button"
@@ -389,11 +396,7 @@
           </button>
 
           <h3>AI Content Repurposing</h3>
-          <div class="case-summary">
-            <div class="case-row"><span class="case-indicator case-indicator--problem">Problem</span><span class="case-description">— Turning one source file into content for several channels involves repeated transcription, writing, and publishing tasks.</span></div>
-            <div class="case-row"><span class="case-indicator case-indicator--solution">Solution</span><span class="case-description">— Zapier pulls files from Google Drive, uses AI for transcription and blog creation, then distributes content through Paths and Looping.</span></div>
-            <div class="case-row"><span class="case-indicator case-indicator--result">Result</span><span class="case-description">— Less repetitive content processing and more consistent multi-channel distribution.</span></div>
-          </div>
+          <p class="project-summary">Uses Zapier and AI to turn source files into content and distribute it across multiple channels.</p>
 
           <div class="tags">
             <span>Google Drive</span>
@@ -405,10 +408,19 @@
             <span>Looping</span>
           </div>
 
-          <button class="text-link" type="button" data-project="content">View Case Study</button>
+          <div class="project-actions">
+            <button class="text-link" type="button" data-project="content">View Case Study</button>
+            <button
+              class="text-link project-loom-link"
+              type="button"
+              data-video="assets/videos/zapier-content-repurposing.mp4"
+              data-video-title="AI Content Repurposing — Loom Walkthrough"
+              aria-label="Watch AI Content Repurposing Loom walkthrough"
+            ><span aria-hidden="true">▶</span> Watch Loom Walkthrough</button>
+          </div>
         </article>
 
-        <article class="glass-card project-card reveal delay-2">
+        <article class="glass-card project-card reveal delay-2" data-project-category="zapier">
           <button
             class="project-shot"
             type="button"
@@ -420,11 +432,7 @@
           </button>
 
           <h3>CRM Lead Engagement</h3>
-          <div class="case-summary">
-            <div class="case-row"><span class="case-indicator case-indicator--problem">Problem</span><span class="case-description">— Leads at different CRM stages need different follow-up, making manual tracking inconsistent.</span></div>
-            <div class="case-row"><span class="case-indicator case-indicator--solution">Solution</span><span class="case-description">— Zapier uses Asana stages, Paths, Filters, AI-generated messages, Gmail, and delays to trigger the appropriate follow-up.</span></div>
-            <div class="case-row"><span class="case-indicator case-indicator--result">Result</span><span class="case-description">— More consistent stage-based communication with less manual monitoring.</span></div>
-          </div>
+          <p class="project-summary">Uses CRM stages, Paths, Filters, AI-generated messaging, and timed email steps to automate the appropriate follow-up.</p>
 
           <div class="tags">
             <span>Asana</span>
@@ -435,10 +443,19 @@
             <span>Delay</span>
           </div>
 
-          <button class="text-link" type="button" data-project="crm">View Case Study</button>
+          <div class="project-actions">
+            <button class="text-link" type="button" data-project="crm">View Case Study</button>
+            <button
+              class="text-link project-loom-link"
+              type="button"
+              data-video="assets/videos/zapier-crm-lead-engagement.mp4"
+              data-video-title="CRM Lead Engagement — Loom Walkthrough"
+              aria-label="Watch CRM Lead Engagement Loom walkthrough"
+            ><span aria-hidden="true">▶</span> Watch Loom Walkthrough</button>
+          </div>
         </article>
 
-        <article class="glass-card project-card reveal">
+        <article class="glass-card project-card reveal" data-project-category="make">
           <button
             class="project-shot"
             type="button"
@@ -450,11 +467,7 @@
           </button>
 
           <h3>Gmail Attachment &amp; AI File Processing</h3>
-          <div class="case-summary">
-            <div class="case-row"><span class="case-indicator case-indicator--problem">Problem</span><span class="case-description">— Email attachments require repeated downloading, reviewing, storing, and data entry.</span></div>
-            <div class="case-row"><span class="case-indicator case-indicator--solution">Solution</span><span class="case-description">— Make.com watches Gmail, processes attachments with AI, stores files in Google Drive, maps data to Google Sheets, and applies conditional logic.</span></div>
-            <div class="case-row"><span class="case-indicator case-indicator--result">Result</span><span class="case-description">— Better-organized files and data with fewer repetitive handling tasks.</span></div>
-          </div>
+          <p class="project-summary">Processes Gmail attachments with AI, stores files in Google Drive, and maps the extracted data into Google Sheets through Make.com.</p>
 
           <div class="tags">
             <span>Make.com</span>
@@ -465,10 +478,19 @@
             <span>Data Mapping</span>
           </div>
 
-          <button class="text-link" type="button" data-project="files">View Case Study</button>
+          <div class="project-actions">
+            <button class="text-link" type="button" data-project="files">View Case Study</button>
+            <button
+              class="text-link project-loom-link"
+              type="button"
+              data-video="assets/videos/make-email-attachments.mp4"
+              data-video-title="Gmail Attachment &amp; AI File Processing — Loom Walkthrough"
+              aria-label="Watch Gmail Attachment and AI File Processing Loom walkthrough"
+            ><span aria-hidden="true">▶</span> Watch Loom Walkthrough</button>
+          </div>
         </article>
 
-        <article class="glass-card project-card reveal delay-1">
+        <article class="glass-card project-card reveal delay-1" data-project-category="make">
           <button
             class="project-shot"
             type="button"
@@ -480,11 +502,7 @@
           </button>
 
           <h3>Asana–Xero Integration</h3>
-          <div class="case-summary">
-            <div class="case-row"><span class="case-indicator case-indicator--problem">Problem</span><span class="case-description">— Moving task data and attachments between Asana and Xero manually creates repeated data-handling work.</span></div>
-            <div class="case-row"><span class="case-indicator case-indicator--solution">Solution</span><span class="case-description">— Make.com connects both platforms through APIs, using routers, iterators, Google Sheets logging, and attachment handling.</span></div>
-            <div class="case-row"><span class="case-indicator case-indicator--result">Result</span><span class="case-description">— Less repetitive data entry and more consistent organization across the connected tools.</span></div>
-          </div>
+          <p class="project-summary">Connects Asana and Xero through Make.com to process task data, attachments, and workflow logs.</p>
 
           <div class="tags">
             <span>Make.com</span>
@@ -495,30 +513,100 @@
             <span>Iterators</span>
           </div>
 
-          <button class="text-link" type="button" data-project="xero">View Case Study</button>
+          <div class="project-actions">
+            <button class="text-link" type="button" data-project="xero">View Case Study</button>
+            <button
+              class="text-link project-loom-link"
+              type="button"
+              data-video="assets/videos/make-asana-xero.mp4"
+              data-video-title="Asana–Xero Integration — Loom Walkthrough"
+              aria-label="Watch Asana–Xero Integration Loom walkthrough"
+            ><span aria-hidden="true">▶</span> Watch Loom Walkthrough</button>
+          </div>
         </article>
 
-        <article class="glass-card project-card reveal delay-2">
-          <div class="project-visual pv-6" aria-hidden="true"></div>
-
-          <h3>n8n AI Automation Training</h3>
-          <div class="case-summary">
-            <div class="case-row"><span class="case-indicator case-indicator--problem">Problem</span><span class="case-description">— Building flexible n8n automations requires practical knowledge of nodes, data handling, APIs, branching, and looping.</span></div>
-            <div class="case-row"><span class="case-indicator case-indicator--solution">Solution</span><span class="case-description">— This hands-on training project applies those concepts through AI Agents, AI workflows, APIs, MCP, and workflow logic.</span></div>
-            <div class="case-row"><span class="case-indicator case-indicator--result">Result</span><span class="case-description">— Demonstrates practical n8n workflow-building skills without presenting the training as client work.</span></div>
-          </div>
+        <article class="glass-card project-card reveal" data-project-category="gohighlevel">
+          <h3>GoHighLevel CRM, Lead Management &amp; AI Automation</h3>
+          <p class="project-summary">Built and managed GoHighLevel automation systems for lead management, CRM pipelines, qualification, follow-ups, and AI-assisted customer communication.</p>
 
           <div class="tags">
-            <span>n8n</span>
+            <span>GoHighLevel</span>
+            <span>CRM Automation</span>
             <span>AI Agents</span>
-            <span>APIs</span>
-            <span>MCP</span>
-            <span>Workflow Nodes</span>
+            <span>Workflow Automation</span>
           </div>
 
-          <button class="text-link" type="button" data-project="n8n">View Case Study</button>
+          <div class="project-actions">
+            <button class="text-link" type="button" data-project="ghl">View Case Study</button>
+            <button
+              class="text-link project-loom-link"
+              type="button"
+              data-video="assets/videos/ghl-crm-lead-ai-automation.mp4"
+              data-video-title="GoHighLevel CRM, Lead Management &amp; AI Automation — Loom Walkthrough"
+              aria-label="Watch GoHighLevel CRM, Lead Management and AI Automation Loom walkthrough"
+            ><span aria-hidden="true">▶</span> Watch Loom Walkthrough</button>
+          </div>
         </article>
       </div>
+
+      <section class="ghl-project-gallery glass-card reveal" id="ghlProjectGallery" aria-labelledby="ghlGalleryTitle" hidden>
+        <div class="ghl-project-gallery-head">
+          <p class="kicker">GoHighLevel</p>
+          <h3 id="ghlGalleryTitle">Project Gallery</h3>
+        </div>
+
+        <div class="ghl-project-gallery-grid">
+          <button
+            class="project-shot"
+            type="button"
+            data-lightbox="assets/projects/ghl-pipeline-opportunities.png"
+            data-lightbox-title="CRM Pipeline / Opportunities"
+          >
+            <img src="assets/projects/ghl-pipeline-opportunities.png" alt="GoHighLevel CRM pipeline and opportunities screenshot" loading="lazy">
+            <span class="shot-hint">CRM Pipeline / Opportunities</span>
+          </button>
+
+          <button
+            class="project-shot"
+            type="button"
+            data-lightbox="assets/projects/ghl-auto-qualified-lead.png"
+            data-lightbox-title="Auto Qualified Lead Detection"
+          >
+            <img src="assets/projects/ghl-auto-qualified-lead.png" alt="GoHighLevel Auto Qualified Lead Detection workflow screenshot" loading="lazy">
+            <span class="shot-hint">Auto Qualified Lead Detection</span>
+          </button>
+
+          <button
+            class="project-shot"
+            type="button"
+            data-lightbox="assets/projects/ghl-ai-agent-configuration.png"
+            data-lightbox-title="AI Agent configuration"
+          >
+            <img src="assets/projects/ghl-ai-agent-configuration.png" alt="GoHighLevel AI Agent configuration screenshot" loading="lazy">
+            <span class="shot-hint">AI Agent configuration</span>
+          </button>
+
+          <button
+            class="project-shot"
+            type="button"
+            data-lightbox="assets/projects/ghl-human-handover.png"
+            data-lightbox-title="Human Handover configuration"
+          >
+            <img src="assets/projects/ghl-human-handover.png" alt="GoHighLevel Human Handover configuration screenshot" loading="lazy">
+            <span class="shot-hint">Human Handover configuration</span>
+          </button>
+
+          <button
+            class="project-shot"
+            type="button"
+            data-lightbox="assets/projects/ghl-auto-follow-up.png"
+            data-lightbox-title="Auto Follow-up configuration"
+          >
+            <img src="assets/projects/ghl-auto-follow-up.png" alt="GoHighLevel Auto Follow-up configuration screenshot" loading="lazy">
+            <span class="shot-hint">Auto Follow-up configuration</span>
+          </button>
+        </div>
+      </section>
     </section>
 
     <!-- EXPERIENCE -->
@@ -639,7 +727,6 @@
             <li class="tool-item"><img src="assets/icons/zapier.svg" alt="Zapier"><span>Zapier</span></li>
             <li class="tool-item"><img src="assets/icons/gohighlevel.svg" alt="GoHighLevel"><span>GoHighLevel</span></li>
             <li class="tool-item"><img src="assets/icons/make.svg" alt="Make.com"><span>Make.com</span></li>
-            <li class="tool-item"><img src="assets/icons/n8n.svg" alt="n8n"><span>n8n</span></li>
             <li class="tool-item"><img src="assets/icons/gmail.svg" alt="Gmail"><span>Gmail</span></li>
             <li class="tool-item"><img src="assets/icons/googlesheets.svg" alt="Google Sheets"><span>Google Sheets</span></li>
             <li class="tool-item"><img src="assets/icons/googledrive.svg" alt="Google Drive"><span>Google Drive</span></li>
@@ -661,7 +748,6 @@
             <li class="tool-item"><img src="assets/icons/zapier.svg" alt=""><span>Zapier</span></li>
             <li class="tool-item"><img src="assets/icons/gohighlevel.svg" alt=""><span>GoHighLevel</span></li>
             <li class="tool-item"><img src="assets/icons/make.svg" alt=""><span>Make.com</span></li>
-            <li class="tool-item"><img src="assets/icons/n8n.svg" alt=""><span>n8n</span></li>
             <li class="tool-item"><img src="assets/icons/gmail.svg" alt=""><span>Gmail</span></li>
             <li class="tool-item"><img src="assets/icons/googlesheets.svg" alt=""><span>Google Sheets</span></li>
             <li class="tool-item"><img src="assets/icons/googledrive.svg" alt=""><span>Google Drive</span></li>
@@ -702,7 +788,6 @@
           <h3>Automation Platforms</h3>
           <ul>
             <li class="skill-tool"><img src="assets/icons/make.svg" alt=""><span>Make</span></li>
-            <li class="skill-tool"><img src="assets/icons/n8n.svg" alt=""><span>n8n</span></li>
           </ul>
         </article>
 
@@ -803,6 +888,42 @@
             <p class="cert-issuer">Technical Virtual Assistants PH</p>
           </div>
         </article>
+
+        <article class="glass-card cert-card cert-card--automation reveal">
+          <button
+            class="cert-mark"
+            type="button"
+            data-lightbox="assets/certificates/highlevel.png"
+            data-lightbox-title=""
+            aria-label="View HighLevel CRM certificate"
+          >
+            <img src="assets/certificates/highlevel.png" alt="HighLevel CRM Full Training certificate">
+          </button>
+
+          <div class="cert-details">
+            <p class="muted cert-date">September 7, 2026</p>
+            <h3>HighLevel CRM — Full Training</h3>
+            <p class="cert-issuer">Tara AI Community+</p>
+          </div>
+        </article>
+
+        <article class="glass-card cert-card cert-card--automation reveal delay-1">
+          <button
+            class="cert-mark"
+            type="button"
+            data-lightbox="assets/certificates/prompt-engineering.png"
+            data-lightbox-title=""
+            aria-label="View Prompt Engineering certificate"
+          >
+            <img src="assets/certificates/prompt-engineering.png" alt="Prompt Engineering Full Training certificate">
+          </button>
+
+          <div class="cert-details">
+            <p class="muted cert-date">August 21, 2026</p>
+            <h3>Prompt Engineering — Full Training</h3>
+            <p class="cert-issuer">Tara AI Community+</p>
+          </div>
+        </article>
       </div>
     </section>
 
@@ -814,7 +935,7 @@
           <h2>Let’s Automate Your Business</h2>
 
           <p>
-            Have a repetitive process, disconnected tools, or a lead management workflow that takes too much manual work? Tell me how your current process works, and let’s explore how Zapier, GoHighLevel, Make, or n8n can simplify it.
+            Have a repetitive process, disconnected tools, or a lead management workflow that takes too much manual work? Tell me how your current process works, and let’s explore how Zapier, GoHighLevel, or Make can simplify it.
           </p>
 
           <ul class="contact-meta">
@@ -830,7 +951,7 @@
 
             <li>
               <span>Focus</span>
-              <strong>AI Automation | Zapier | Make.com | n8n | GoHighLevel</strong>
+              <strong>AI Automation | Zapier | Make.com | GoHighLevel</strong>
             </li>
           </ul>
         </div>
@@ -895,7 +1016,19 @@
       <p class="kicker" id="modalKicker">Case Study</p>
       <h2 id="modalTitle"></h2>
       <div id="modalBody"></div>
+      <p class="modal-section-label" id="modalToolsLabel" hidden>Tools used</p>
       <div class="tags" id="modalTags"></div>
+    </div>
+  </div>
+
+  <div class="modal video-modal" id="videoModal" hidden>
+    <div class="modal-backdrop" data-close-video-modal></div>
+
+    <div class="modal-card video-modal-card glass-card" role="dialog" aria-modal="true" aria-labelledby="videoModalTitle">
+      <button class="modal-close" type="button" data-close-video-modal aria-label="Close video">×</button>
+      <p class="kicker">Video Walkthrough</p>
+      <h2 id="videoModalTitle"></h2>
+      <video id="videoPlayer" controls playsinline preload="metadata"></video>
     </div>
   </div>
 
