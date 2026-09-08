@@ -12,7 +12,12 @@
   const modal = document.getElementById("modal");
   const modalTitle = document.getElementById("modalTitle");
   const modalBody = document.getElementById("modalBody");
+  const modalToolsLabel = document.getElementById("modalToolsLabel");
   const modalTags = document.getElementById("modalTags");
+  const ghlProjectGallery = document.getElementById("ghlProjectGallery");
+  const videoModal = document.getElementById("videoModal");
+  const videoModalTitle = document.getElementById("videoModalTitle");
+  const videoPlayer = document.getElementById("videoPlayer");
   const lightbox = document.getElementById("lightbox");
   const lightboxImage = document.getElementById("lightboxImage");
   const lightboxCaption = document.getElementById("lightboxCaption");
@@ -140,41 +145,77 @@
   -------------------------------------------------- */
   const projects = {
     lead: {
+      category: "zapier",
       title: "Lead Enrichment & Qualification",
       body: "🔴 Problem — New leads require repetitive enrichment, qualification, routing, and follow-up. 🟡 Solution — Zapier formats company URLs, enriches records through a webhook and Apollo, separates high- and low-priority paths, logs high-priority leads in Google Sheets, alerts Slack, drafts with AI, and sends through Gmail. 🟢 Result — Faster lead response, more consistent routing, organized lead data, and less manual lead handling.",
       tags: ["Zapier", "Typeform", "Webhooks", "Apollo", "Paths", "Google Sheets", "Slack", "AI by Zapier", "Gmail"],
       image: "assets/projects/leads-enrichment.png"
     },
     content: {
+      category: "zapier",
       title: "AI Content Repurposing",
       body: "🔴 Problem — Turning one source file into content for several channels involves repeated transcription, writing, and publishing tasks. 🟡 Solution — Zapier pulls source files from Google Drive, uses AI for transcription and blog generation, then distributes content across Facebook Pages, LinkedIn, and Instagram for Business with Paths and Looping. 🟢 Result — Less repetitive content processing and more consistent multi-channel distribution.",
       tags: ["Google Drive", "AI", "Facebook Pages", "LinkedIn", "Instagram for Business", "Zapier Paths", "Looping"],
       image: "assets/projects/ai-content-repurposing.png"
     },
     crm: {
+      category: "zapier",
       title: "CRM Lead Engagement",
       body: "🔴 Problem — Leads at different CRM stages need different follow-up, making manual tracking inconsistent. 🟡 Solution — Zapier reads Asana CRM stages and uses Paths, Filters, AI-generated messaging, Gmail, Google Drive, and Delay by Zapier to trigger the appropriate communication. 🟢 Result — More consistent stage-based follow-up with less manual monitoring.",
       tags: ["Asana", "Zapier Paths", "Filters", "Gmail", "Google Drive", "AI-generated messaging", "Delay by Zapier"],
       image: "assets/projects/crm-lead-engagement.png"
     },
     files: {
+      category: "make",
       title: "Gmail Attachment & AI File Processing",
       body: "🔴 Problem — Email attachments require repeated downloading, reviewing, storing, and data entry. 🟡 Solution — Make.com watches Gmail for attachments, processes files with AI, stores them in Google Drive, maps data into Google Sheets, and uses conditional logic for the next steps. 🟢 Result — Better-organized files and data with fewer repetitive handling tasks.",
       tags: ["Make.com", "Gmail", "AI", "Google Drive", "Google Sheets", "Data Mapping", "Conditional Logic"],
       image: "assets/projects/gmail-ai-files.png"
     },
     xero: {
+      category: "make",
       title: "Asana–Xero Integration",
       body: "🔴 Problem — Moving task data and attachments between Asana and Xero manually creates repeated data-handling work. 🟡 Solution — Make.com moves and processes data between both platforms through APIs, using routers, iterators, Google Sheets logging, and attachment handling. 🟢 Result — Less repetitive data entry and more consistent organization across the connected tools.",
       tags: ["Make.com", "Asana", "Xero", "APIs", "Routers", "Iterators", "Google Sheets", "Attachments"],
       image: "assets/projects/asana-xero.png"
     },
-    n8n: {
-      title: "n8n AI Automation Training",
-      body: "🔴 Problem — Building flexible n8n automations requires practical knowledge of nodes, data handling, APIs, branching, and looping. 🟡 Solution — This hands-on training project applies those concepts through AI Agents, AI workflows, APIs, MCP, and workflow logic in n8n. 🟢 Result — Demonstrates practical n8n workflow-building skills without presenting the training as client work.",
-      tags: ["n8n", "AI Agents", "AI Workflows", "APIs", "MCP", "Workflow Nodes", "Data Handling", "Branching", "Looping"]
+    ghl: {
+      category: "gohighlevel",
+      title: "GoHighLevel CRM, Lead Management & AI Automation",
+      overview: "Built and managed GoHighLevel automation systems for lead management, CRM pipelines, qualification, follow-ups, and AI-assisted customer communication.",
+      body: "🔴 Problem — Managing incoming leads manually can make qualification, pipeline tracking, follow-ups, and customer communication inconsistent and time-consuming. 🟡 Solution — Built GoHighLevel CRM and automation workflows that organize leads through pipeline stages, detect qualified leads using conditional logic, update opportunities and tags, trigger internal notifications, and support AI-powered customer conversations. The AI setup also includes automated follow-ups and human handover when a customer requests assistance from a real person. 🟢 Result — Created a more organized lead-management system that connects CRM pipeline management, lead qualification, automated follow-up, internal notifications, AI-assisted conversations, and human escalation in one workflow environment.",
+      tags: ["GoHighLevel", "CRM Automation", "AI Agents", "Workflow Automation"]
     }
   };
+
+  const projectFilterButtons = [...document.querySelectorAll("[data-project-filter]")];
+  const projectCards = [...document.querySelectorAll("[data-project-category]")];
+
+  const getCardProject = (card) => {
+    const projectKey = card.querySelector("[data-project]")?.dataset.project;
+    return projectKey ? projects[projectKey] : null;
+  };
+
+  const applyProjectFilter = (selected) => {
+    projectFilterButtons.forEach((filterButton) => {
+      const active = filterButton.dataset.projectFilter === selected;
+      filterButton.classList.toggle("is-active", active);
+      filterButton.setAttribute("aria-pressed", String(active));
+    });
+    projectCards.forEach((card) => {
+      const project = getCardProject(card);
+      card.hidden = selected !== "all" && project?.category !== selected;
+    });
+    if (ghlProjectGallery) {
+      ghlProjectGallery.hidden = selected !== "all" && selected !== "gohighlevel";
+    }
+  };
+
+  projectFilterButtons.forEach((button) => {
+    button.addEventListener("click", () => applyProjectFilter(button.dataset.projectFilter));
+  });
+
+  applyProjectFilter("all");
 
   const caseLabelClasses = {
     "🔴 Problem": "case-indicator--problem",
@@ -202,20 +243,62 @@
     }
   };
 
+  const resetModalContent = () => {
+    modalTitle.textContent = "";
+    modalBody.replaceChildren();
+    modalTags.replaceChildren();
+    if (modalToolsLabel) modalToolsLabel.hidden = true;
+  };
+
   const openModal = (key) => {
     const item = projects[key];
     if (!item || !modal) return;
+    resetModalContent();
     modalTitle.textContent = item.title;
     renderCaseStudyBody(item.body);
+
+    if (item.overview) {
+      const overview = document.createElement("div");
+      overview.className = "modal-overview";
+      const overviewTitle = document.createElement("h3");
+      overviewTitle.textContent = "Project overview";
+      const overviewText = document.createElement("p");
+      overviewText.textContent = item.overview;
+      overview.append(overviewTitle, overviewText);
+      modalBody.prepend(overview);
+    }
+
+    if (modalToolsLabel) modalToolsLabel.hidden = false;
     modalTags.innerHTML = item.tags.map((tag) => `<span>${tag}</span>`).join("");
     modal.hidden = false;
+    modal.querySelector(".modal-card")?.scrollTo({ top: 0 });
     document.body.style.overflow = "hidden";
   };
 
   const closeModal = () => {
     if (!modal) return;
     modal.hidden = true;
-    document.body.style.overflow = "";
+    if (!videoModal || videoModal.hidden) document.body.style.overflow = "";
+  };
+
+  const openVideoModal = (src, title) => {
+    if (!videoModal || !videoPlayer || !src) return;
+    if (videoModalTitle) videoModalTitle.textContent = title || "Video Walkthrough";
+    videoPlayer.src = src;
+    videoPlayer.load();
+    videoModal.hidden = false;
+    document.body.style.overflow = "hidden";
+  };
+
+  const closeVideoModal = () => {
+    if (!videoModal || !videoPlayer) return;
+    videoPlayer.pause();
+    videoPlayer.removeAttribute("src");
+    videoPlayer.load();
+    videoModal.hidden = true;
+    if ((!modal || modal.hidden) && (!lightbox || lightbox.hidden)) {
+      document.body.style.overflow = "";
+    }
   };
 
   const openLightbox = (src, title) => {
@@ -230,7 +313,9 @@
   const closeLightbox = () => {
     if (!lightbox) return;
     lightbox.hidden = true;
-    if (!modal || modal.hidden) document.body.style.overflow = "";
+    if ((!modal || modal.hidden) && (!videoModal || videoModal.hidden)) {
+      document.body.style.overflow = "";
+    }
   };
 
   document.querySelectorAll("[data-project]").forEach((btn) => {
@@ -239,8 +324,14 @@
   document.querySelectorAll("[data-lightbox]").forEach((btn) => {
     btn.addEventListener("click", () => openLightbox(btn.dataset.lightbox, btn.dataset.lightboxTitle));
   });
+  document.querySelectorAll("[data-video]").forEach((btn) => {
+    btn.addEventListener("click", () => openVideoModal(btn.dataset.video, btn.dataset.videoTitle));
+  });
   modal?.querySelectorAll("[data-close-modal]").forEach((el) => {
     el.addEventListener("click", closeModal);
+  });
+  videoModal?.querySelectorAll("[data-close-video-modal]").forEach((el) => {
+    el.addEventListener("click", closeVideoModal);
   });
   lightbox?.querySelectorAll("[data-close-lightbox]").forEach((el) => {
     el.addEventListener("click", closeLightbox);
@@ -248,6 +339,7 @@
   document.addEventListener("keydown", (e) => {
     if (e.key !== "Escape") return;
     if (lightbox && !lightbox.hidden) closeLightbox();
+    else if (videoModal && !videoModal.hidden) closeVideoModal();
     else if (modal && !modal.hidden) closeModal();
   });
 
