@@ -15,9 +15,6 @@
   const modalToolsLabel = document.getElementById("modalToolsLabel");
   const modalTags = document.getElementById("modalTags");
   const ghlProjectGallery = document.getElementById("ghlProjectGallery");
-  const videoModal = document.getElementById("videoModal");
-  const videoModalTitle = document.getElementById("videoModalTitle");
-  const videoPlayer = document.getElementById("videoPlayer");
   const lightbox = document.getElementById("lightbox");
   const lightboxImage = document.getElementById("lightboxImage");
   const lightboxCaption = document.getElementById("lightboxCaption");
@@ -278,27 +275,7 @@
   const closeModal = () => {
     if (!modal) return;
     modal.hidden = true;
-    if (!videoModal || videoModal.hidden) document.body.style.overflow = "";
-  };
-
-  const openVideoModal = (src, title) => {
-    if (!videoModal || !videoPlayer || !src) return;
-    if (videoModalTitle) videoModalTitle.textContent = title || "Video Walkthrough";
-    videoPlayer.src = src;
-    videoPlayer.load();
-    videoModal.hidden = false;
-    document.body.style.overflow = "hidden";
-  };
-
-  const closeVideoModal = () => {
-    if (!videoModal || !videoPlayer) return;
-    videoPlayer.pause();
-    videoPlayer.removeAttribute("src");
-    videoPlayer.load();
-    videoModal.hidden = true;
-    if ((!modal || modal.hidden) && (!lightbox || lightbox.hidden)) {
-      document.body.style.overflow = "";
-    }
+    document.body.style.overflow = "";
   };
 
   const openLightbox = (src, title) => {
@@ -313,9 +290,7 @@
   const closeLightbox = () => {
     if (!lightbox) return;
     lightbox.hidden = true;
-    if ((!modal || modal.hidden) && (!videoModal || videoModal.hidden)) {
-      document.body.style.overflow = "";
-    }
+    if (!modal || modal.hidden) document.body.style.overflow = "";
   };
 
   document.querySelectorAll("[data-project]").forEach((btn) => {
@@ -324,14 +299,8 @@
   document.querySelectorAll("[data-lightbox]").forEach((btn) => {
     btn.addEventListener("click", () => openLightbox(btn.dataset.lightbox, btn.dataset.lightboxTitle));
   });
-  document.querySelectorAll("[data-video]").forEach((btn) => {
-    btn.addEventListener("click", () => openVideoModal(btn.dataset.video, btn.dataset.videoTitle));
-  });
   modal?.querySelectorAll("[data-close-modal]").forEach((el) => {
     el.addEventListener("click", closeModal);
-  });
-  videoModal?.querySelectorAll("[data-close-video-modal]").forEach((el) => {
-    el.addEventListener("click", closeVideoModal);
   });
   lightbox?.querySelectorAll("[data-close-lightbox]").forEach((el) => {
     el.addEventListener("click", closeLightbox);
@@ -339,7 +308,6 @@
   document.addEventListener("keydown", (e) => {
     if (e.key !== "Escape") return;
     if (lightbox && !lightbox.hidden) closeLightbox();
-    else if (videoModal && !videoModal.hidden) closeVideoModal();
     else if (modal && !modal.hidden) closeModal();
   });
 
