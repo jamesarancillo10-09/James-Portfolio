@@ -1046,19 +1046,6 @@ html[data-theme="light"] .profile-orb {
 }
 .modal-card h2 { margin: 8px 0 12px; }
 
-.video-modal { z-index: 95; }
-.video-modal-card { width: min(960px, 100%); }
-.video-modal-card video {
-  display: block;
-  width: 100%;
-  max-height: 70vh;
-  aspect-ratio: 16 / 9;
-  object-fit: contain;
-  border: 1px solid var(--glass-border);
-  border-radius: 14px;
-  background: #0d0a14;
-}
-
 .lightbox {
   position: fixed;
   inset: 0;
